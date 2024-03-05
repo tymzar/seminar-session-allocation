@@ -1,0 +1,12 @@
+# Directory for the virtual environment
+venv
+
+# Directory for the input data
+input/*
+
+# Directory for the output data
+output/*
+
+!.gitkeep
+
+.DS_Store
