@@ -1,4 +1,6 @@
+import base64
 import csv
+import hashlib
 import random
 import sys
 import xlsxwriter
@@ -71,9 +73,8 @@ def generate_seed_from_image(image_path: str) -> int:
     try:
         with open(image_path, "rb") as image_file:
             image_data = image_file.read()
-
-            # TODO: Create hashing function for image data
-            return 0
+            base64_image = base64.b64encode(image_data)
+            return int(hashlib.sha256(base64_image).hexdigest(), 16) % (10**10)
 
     except Exception as e:
         print(f"Error reading image for seed generation: {e}")
